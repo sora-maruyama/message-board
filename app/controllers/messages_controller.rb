@@ -9,7 +9,7 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.new(message_params)
-   #@message = Message.new(name:"佐藤",body:"こんにちは")
+   #@message = Message.new(name:"佐藤",age:20,body:"こんにちは")
     if @message.save
       redirect_to root_path , notice: 'メッセージを保存しました'
     else
@@ -42,7 +42,7 @@ class MessagesController < ApplicationController
 
   private
   def message_params
-    params.require(:message).permit(:name, :body)
+    params.require(:message).permit(:name,:age,:body)
   end
   def set_message
     @message = Message.find(params[:id])

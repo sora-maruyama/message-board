@@ -1,4 +1,4 @@
-require 'test_helper'
+。require 'test_helper'
 
 class MessagesControllerTest < ActionController::TestCase
   test "should get index" do

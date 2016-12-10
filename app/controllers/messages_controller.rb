@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
   before_action :set_message, only: [:edit, :update, :destroy]
   
+  
   def index
     @message = Message.new
     # Messageを全て取得する。
@@ -9,7 +10,6 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.new(message_params)
-   #@message = Message.new(name:"佐藤",body:"こんにちは")
     if @message.save
       redirect_to root_path , notice: 'メッセージを保存しました'
     else

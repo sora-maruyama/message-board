@@ -4,6 +4,9 @@
   </div>
     
   <div class="panel-body">
+   
+   
+   
     <% @messages.each do |message| %>
       <span class="label label-info"><%= message.name %></span>
       <%= message.body %>
@@ -12,12 +15,24 @@
   </div>
 </div>
 
-<%= form_for(@message) do |f| %><br>
-  名前:<br>
-  <%= f.text_field :name %><br><br>
+<%= form_for(@message) do |f| %>
+  <% if @message.errors.present? %>
+    <div class="alert alert-danger">
+      <%= alert %>
+      <ul>
+        <% @message.errors.full_messages.each do |full_message| %>
+          <li>
+            <%= full_message %>
+          </li>
+        <% end %> 
+      </ul>
+    </div>
+  <% end %>
 
- 内容:
- <textarea class="form-control" rows="3"></textarea><br>
-  
+  名前:
+  <%= f.text_field :name %>
+
+  内容:
+  <%= f.text_field :body %>
   <%= f.submit class: "btn btn-sm btn-primary" %>
 <% end %>

@@ -4,6 +4,9 @@ class MessagesController < ApplicationController
     # Messageを全て取得する。
     @messages = Message.all
   end
+  
+  
+
   # 中略
 
   def create
@@ -14,6 +17,6 @@ class MessagesController < ApplicationController
 
   private
   def message_params
-    params.require(:message).permit(:name, :body)
+    params.require(:message).permit(:name, :age, :body)
   end
 end
